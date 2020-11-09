@@ -4,6 +4,7 @@ const multer = require("multer");
 
 const { Product } = require("../models/Product");
 const { auth } = require("../middleware/auth");
+const User = require("../models/User");
 
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -109,13 +110,13 @@ router.get("/products_by_id", (req, res) => {
 
   // console.log("req.query.id", req.query.id);
 
-  // if (type === "array") {
-  //   let ids = req.query.id.split(",");
-  //   productIds = [];
-  //   productIds = ids.map((item) => {
-  //     return item;
-  //   });
-  // }
+  if (type === "array") {
+    let ids = req.query.id.split(",");
+    productIds = [];
+    productIds = ids.map((item) => {
+      return item;
+    });
+  }
 
   // console.log("productIds", productIds);
 
